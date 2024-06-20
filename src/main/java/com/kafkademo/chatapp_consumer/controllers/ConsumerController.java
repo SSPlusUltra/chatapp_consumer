@@ -1,6 +1,7 @@
 package com.kafkademo.chatapp_consumer.controllers;
 
 import com.kafkademo.chatapp_consumer.services.KafkaConsumer;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +17,8 @@ public class ConsumerController {
     private KafkaConsumer kafkaConsumer;
 
 
-
     @GetMapping("/latest")
-    public String getLatestMessage() {
-        return kafkaConsumer.getLatestMessage(); // Define this method in KafkaConsumer class
+    public ConsumerRecord<String, String> getLatestMessage() {
+        return kafkaConsumer.getLatestRecord();
     }
 }
